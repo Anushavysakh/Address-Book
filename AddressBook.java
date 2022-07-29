@@ -3,7 +3,8 @@ package com.addressbook.bridglabz;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Uc3 {
+public class Uc4 {
+
 	ArrayList<ArrayList<String>> contact = new ArrayList<ArrayList<String>>();
 	Scanner sc = new Scanner(System.in);
 
@@ -68,28 +69,49 @@ public class Uc3 {
 	}
 
 	public void userChoice() {
-		
+
 		int ch;
-		System.out.println("Enter your choice\n 1.Add contact\n 2.Edit contact");
+		System.out.println("Enter your choice\n 1.Add contact\n 2.Edit contact\n3.Delete contact");
 		ch = sc.nextInt();
 		switch (ch) {
 		case 0:
 			System.exit(0);
-		case 1:	
+			break;
+		case 1:
 			contactInfo();
+			break;
 		case 2:
 			editContact();
+			break;
+		case 3:
+			deleteContact();
+			break;
 		default:
 			System.out.println("Enter the valid choice:");
+			userChoice();
+			break;
+		}
+	}
+
+	public void deleteContact() {
+		System.out.println("Enter the first name of the contact you need to delete :");
+		String name = sc.next();
+
+		for (int i = 0; i < contact.size(); i++) {
+			if (contact.get(i).contains(name)) {
+				contact.remove(i);
+				System.out.println("The contact has been deleted");
+				System.out.println("Current Records in Address Book are " + contact.size());
+                break;		
+                }
 		}
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
-		Uc3 obj = new Uc3();
+		Uc4 obj = new Uc4();
 		// obj.contactInfo();
 		// obj.addNew();
 		obj.userChoice();
 	}
-};
+}
