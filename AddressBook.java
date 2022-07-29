@@ -3,11 +3,10 @@ package com.addressbook.bridglabz;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Uc1 {
-//	ArrayList<ArrayList<String>> contact = new ArrayList<ArrayList<String>>();
-//	Scanner sc = new Scanner(System.in);
+public class Uc2 {
+	ArrayList<ArrayList<String>> contact = new ArrayList<ArrayList<String>>();
 
-	public void contactInfo() {
+	public static void contactInfo() {
 		ArrayList<ArrayList<String>> contact = new ArrayList<ArrayList<String>>();
 		Scanner sc = new Scanner(System.in);
 		ArrayList<String> addInfo = new ArrayList<String>();
@@ -16,7 +15,7 @@ public class Uc1 {
 		System.out.println("Enter Last name : ");
 		addInfo.add(sc.next());
 		System.out.println("Enter Address : ");
-		addInfo.add(sc.nextLine());
+		addInfo.add(sc.next());
 		System.out.println("Enter City : ");
 		addInfo.add(sc.next());
 		System.out.println("Enter State : ");
@@ -36,12 +35,20 @@ public class Uc1 {
 		}
 	}
 
+	public static void addNew() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Do you want to add another contact to the Address Book? (Y/N)");
+		String choice = sc.next();
+		if (choice.equalsIgnoreCase("y") || choice.equalsIgnoreCase("yes")) {
+			contactInfo();
+		}
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Uc1 obj = new Uc1();
+		Uc2 obj = new Uc2();
 		obj.contactInfo();
-		Uc2 obj1 = new Uc2();
-		obj1.addNew();
+		addNew();
 
 	}
 }
